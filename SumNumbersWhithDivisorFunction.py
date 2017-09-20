@@ -1,13 +1,12 @@
 def fdivisor(down, up, divisor):
-    list = []
+    a = 0
     for i in range(int(down), int(up)+1):
         if i % divisor == 0:
-            list.append(i)
+            a = a + i
+    return a
 
-    print (sum(list))
-
-fdivisor(1, 1000, 17)
-fdivisor(1, 1000, 21)
-fdivisor(1, 1000, 33)
-fdivisor(1, 1000, 47)
-fdivisor(1, 1000, 55)
+print(fdivisor(1, 1000, 17))
+print(fdivisor(1, 1000, 21))
+print(fdivisor(1, 1000, 33))
+print(fdivisor(1, 1000, 47))
+print(fdivisor(1, 1000, 55))
