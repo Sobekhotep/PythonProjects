@@ -1,13 +1,13 @@
 def fdivider(down, up, div):
-    var = 0
-    var2 = 0
+    local_sum = 0
+    total_sum = 0
 
-    while var < up:
-        var += down
-        if var % div == 0:
-            var2 += var
+    while local_sum < up:
+        local_sum += down
+        if local_sum % div == 0:
+            total_sum += local_sum
 
-    return var2
+    return total_sum
 
 print(fdivider(1, 1000, 17))
 print(fdivider(1, 1000, 21))
