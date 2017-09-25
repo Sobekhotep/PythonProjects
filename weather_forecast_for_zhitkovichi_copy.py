@@ -3,8 +3,7 @@ import xml.etree.ElementTree as ET
 
 url = requests.get('http://www.eurometeo.ru/belarus/gomelskaya-oblast/jitkovichi/export/xml/data/')
 
-tree = ET.parse(url.text)
-root = tree.getroot()
+root = ET.fromstring(url.text)
 
 for step in root.findall('step'):
     temperature = step.find('temperature').text
