@@ -1,16 +1,15 @@
 import requests
 import xml.etree.ElementTree as ET
 
-url = requests.get('http://www.eurometeo.ru/belarus/gomelskaya-oblast/jitkovichi/export/xml/data/')
+class Forecast:
+    def forecast(url):
+        response = requests.get(url)
+        root = ET.fromstring(response.text)
 
-root = ET.fromstring(url.text)
+    
 
-for step in root.findall('step'):
-    temperature = step.find('temperature').text
-    pressure = step.get('pressure')
-    print(temperature, pressure)
 
-"""print ('Вас приветствует электронный синоптик города Житковичи, версия 1.0')
+print ('Вас приветствует электронный синоптик')
 
 day = int(input('На какой день Вы хотите узнать прогноз погоды? Если на сегодня - введите цифру 1, '
           'на завтра - цифру 2, на послезавтра - цифру 3: '))
