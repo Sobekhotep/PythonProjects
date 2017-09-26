@@ -4,10 +4,9 @@ import xml.etree.ElementTree as ET
 class Forecast():
     """Weather forecast for city or town for which url is entered"""
 
-    def __init__(self, url, response, root, forecast_day, forecast_time):
-        self.url = url
-        self.response = response
-        self.root = root
+    def __init__(self, forecast, forecast_day, forecast_time):
+
+        self.forecast = forecast
         self.forecast_day = forecast_day
         self.forecast_time = forecast_time
 
@@ -33,3 +32,4 @@ class Forecast():
             print('Такого времени, к сожалению, нет.')
             raise SystemExit(1)
 
+show_weather = Forecast()

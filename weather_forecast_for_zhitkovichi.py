@@ -31,8 +31,7 @@ else:
 root_temp = root[0][day * 4 + time - 1][2].text
 root_press = root[0][day * 4 + time - 1][1].text
 
-middle_teemp = round(root_temp)
-temp = str(middle_temp)
+temp = str(root_temp)
 press = str(root_press)
 
 print ('\nТемпература воздуха:', temp + ' градусов',
