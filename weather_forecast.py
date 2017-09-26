@@ -33,7 +33,5 @@ class Forecast():
             print('Такого времени, к сожалению, нет.')
             raise SystemExit(1)
 
-    def show_forecast(self):
-        
-
-forecast_zitkovichi = Forecast(forecast_day = today, forecast_time = morning)
+def forecast(Forecast):
+    
