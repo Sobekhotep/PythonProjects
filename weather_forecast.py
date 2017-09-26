@@ -25,7 +25,7 @@ class Forecast():
             print('Такого дня, к сожалению, нет.')
             raise SystemExit(1)
 
-    def forecast_time(self, morning = True, afternoon = False, evening = False, night = False):
+    def forecast_time(self, morning=True, afternoon=False, evening=False, night=False):
         time_dict = {morning: 1, afternoon: 2, evening: 3, night: 4}
         if time in time_dict:
             return time
@@ -33,5 +33,3 @@ class Forecast():
             print('Такого времени, к сожалению, нет.')
             raise SystemExit(1)
 
-def forecast(Forecast):
-    
