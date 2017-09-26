@@ -1,7 +1,8 @@
 import requests
 import xml.etree.ElementTree as ET
 
-response = requests.get('http://www.eurometeo.ru/belarus/gomelskaya-oblast/jitkovichi/export/xml/data/')
+response = requests.get('http://www.eurometeo.ru/belarus/gomelskaya-oblast/jitkovichi/'
+                        'export/xml/data/')
 root = ET.fromstring(response.text)
 
 print ('Вас приветствует электронный синоптик города Житковичи, версия 1.0')
