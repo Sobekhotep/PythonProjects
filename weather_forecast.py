@@ -16,7 +16,7 @@ class Forecast():
         root = ET.fromstring(response.text)
         return root
 
-    def forecast_day(self, today = True, tomorrow = False, after_tomorrow = False):
+    def forecast_day(self, today=True, tomorrow=False, after_tomorrow=False):
         day_dict = {today: 1, tomorrow: 2, after_tomorrow: 3}
         if day in day_dict:
             return day
