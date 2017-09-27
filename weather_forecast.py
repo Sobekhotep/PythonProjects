@@ -4,31 +4,35 @@ import xml.etree.ElementTree as ET
 class Forecast():
     """Weather forecast for city or town for which url is entered"""
 
-    def __init__(self, forecast, forecast_day, forecast_time):
+    def __init__(self, url):
+        self.url = url
 
-        self.forecast = forecast
-        self.forecast_day = forecast_day
-        self.forecast_time = forecast_time
-
-    def forecast(self, url = 'http://www.eurometeo.ru/belarus/gomelskaya-oblast/jitkovichi/'
-                        'export/xml/data/'):
-        response = requests.get(url)
+    def today(self, night=True, morning=False, afternoon=False, evening=False):
+        response = requests.get(self.url)
         root = ET.fromstring(response.text)
-        return root
-
-    def forecast_day(self, today=True, tomorrow=False, after_tomorrow=False):
-        day_dict = {today: 1, tomorrow: 2, after_tomorrow: 3}
-        if day in day_dict:
-            return day
+        if night == True:
+            print('\nПрогноз погоды в г.', root[0][1].text,
+                                   '\nна', root[0][4][0].text,
+                ' \nТемпература воздуха:', root[0][4][2].text + ' градусов',
+               '\nАтмосферное давление: ', root[0][4][1].text + ' мм ртутного столба')
+        elif morning == True:
+            print('\nПрогноз погоды в г.', root[0][1].text,
+                                   '\nна', root[0][5][0].text,
+                ' \nТемпература воздуха:', root[0][5][2].text + ' градусов',
+               '\nАтмосферное давление: ', root[0][5][1].text + ' мм ртутного столба')
+        elif afternoon == True:
+            print('\nПрогноз погоды в г.', root[0][1].text,
+                                   '\nна', root[0][6][0].text,
+                ' \nТемпература воздуха:', root[0][6][2].text + ' градусов',
+               '\nАтмосферное давление: ', root[0][6][1].text + ' мм ртутного столба')
+        elif evening == True:
+            print('\nПрогноз погоды в г.', root[0][1].text,
+                                   '\nна', root[0][7][0].text,
+                ' \nТемпература воздуха:', root[0][7][2].text + ' градусов',
+               '\nАтмосферное давление: ', root[0][7][1].text + ' мм ртутного столба')
         else:
-            print('Такого дня, к сожалению, нет.')
-            raise SystemExit(1)
+            print('Что-то пошло не так, звоните в милицию.')
 
-    def forecast_time(self, morning=True, afternoon=False, evening=False, night=False):
-        time_dict = {morning: 1, afternoon: 2, evening: 3, night: 4}
-        if time in time_dict:
-            return time
-        else:
-            print('Такого времени, к сожалению, нет.')
-            raise SystemExit(1)
 
+forecast = Forecast('http://www.eurometeo.ru/belarus/gomelskaya-oblast/jitkovichi/export/xml/data/')
+print(forecast.today())
