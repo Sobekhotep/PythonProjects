@@ -32,4 +32,3 @@ class Forecast():
             print('Такого времени, к сожалению, нет.')
             raise SystemExit(1)
 
-show_weather = Forecast()
