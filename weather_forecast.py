@@ -26,7 +26,7 @@ class Forecast():
         root_press = root[0][4 + int(night)*night_value + int(morning)*morning_value +
                              int(afternoon)*afternoon_value + int(evening)*evening_value - 1][1].text
 
-        print ('\nПрогноз погоды в г.', root_city,
+        print ('\nПрогноз погоды по г.', root_city,
                                 '\nна', root_time,
              ' \nТемпература воздуха:', root_temp + ' градусов',
             '\nАтмосферное давление: ', root_press + ' мм ртутного столба')
@@ -43,7 +43,7 @@ class Forecast():
         root_press = root[0][8 + int(night)*night_value + int(morning)*morning_value +
                              int(afternoon)*afternoon_value + int(evening)*evening_value - 1][1].text
 
-        print ('\nПрогноз погоды в г.', root_city,
+        print ('\nПрогноз погоды по г.', root_city,
                                 '\nна', root_time,
              ' \nТемпература воздуха:', root_temp + ' градусов',
             '\nАтмосферное давление: ', root_press + ' мм ртутного столба')
@@ -60,7 +60,7 @@ class Forecast():
         root_press = root[0][12 + int(night)*night_value + int(morning)*morning_value +
                              int(afternoon)*afternoon_value + int(evening)*evening_value - 1][1].text
 
-        print ('\nПрогноз погоды в г.', root_city,
+        print ('\nПрогноз погоды по г.', root_city,
                                 '\nна', root_time,
              ' \nТемпература воздуха:', root_temp + ' градусов',
             '\nАтмосферное давление: ', root_press + ' мм ртутного столба')
@@ -83,11 +83,11 @@ class Forecast():
         root_press = root[0][day*4 + int(night)*night_value + int(morning)*morning_value +
                              int(afternoon)*afternoon_value + int(evening)*evening_value - 1][1].text
 
-        print ('\nПрогноз погоды в г.', root_city,
+        print ('\nПрогноз погоды по г.', root_city,
                                 '\nна', root_time,
              ' \nТемпература воздуха:', root_temp + ' градусов',
             '\nАтмосферное давление: ', root_press + ' мм ртутного столба')
         return ('Спасибо!')
 
 forecast = Forecast('http://www.eurometeo.ru/belarus/gomelskaya-oblast/jitkovichi/export/xml/data/')
-print(forecast.after_tomorrow(evening = True))
+print(forecast.forecast(day=2, evening = True))
