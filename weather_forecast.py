@@ -44,16 +44,13 @@ class Forecast():
         return message
 
     def today(self, night=False, morning=False, afternoon=False, evening=False):
-        message = self.forecast(day=1, night=night, morning=morning, afternoon=afternoon, evening=evening)
-        return message
+        return self.forecast(day=1, night=night, morning=morning, afternoon=afternoon, evening=evening)
 
     def tomorrow(self, night=False, morning=False, afternoon=False, evening=False):
-        message = self.forecast(day=2, night=night, morning=morning, afternoon=afternoon, evening=evening)
-        return (message)
+        return self.forecast(day=2, night=night, morning=morning, afternoon=afternoon, evening=evening)
 
     def after_tomorrow(self, night=False, morning=False, afternoon=False, evening=False):
-        message = self.forecast(day=3, night=night, morning=morning, afternoon=afternoon, evening=evening)
-        return (message)
+        return self.forecast(day=3, night=night, morning=morning, afternoon=afternoon, evening=evening)
 
 forecast = Forecast('http://www.eurometeo.ru/belarus/gomelskaya-oblast/jitkovichi/export/xml/data/')
 print(forecast.today(night=True))
