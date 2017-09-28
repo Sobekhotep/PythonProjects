@@ -44,55 +44,16 @@ class Forecast():
         return message
 
     def today(self, night=False, morning=False, afternoon=False, evening=False):
-        if night == True:
-            message = self.forecast(day=1,     night=True)
-            return (message)
-        elif morning == True:
-            message = self.forecast(day=1,   morning=True)
-            return (message)
-        elif afternoon == True:
-            message = self.forecast(day=1, afternoon=True)
-            return (message)
-        elif evening == True:
-            message = self.forecast(day=1,   evening=True)
-            return (message)
-        else:
-            print('Что-то пошло не так, звоните в милицию.')
-            raise SystemExit(1)
+        message = self.forecast(day=1, night=night, morning=morning, afternoon=afternoon, evening=evening)
+        return message
 
     def tomorrow(self, night=False, morning=False, afternoon=False, evening=False):
-        if night == True:
-            message = self.forecast(day=2,     night=True)
-            return (message)
-        elif morning == True:
-            message = self.forecast(day=2,   morning=True)
-            return (message)
-        elif afternoon == True:
-            message = self.forecast(day=2, afternoon=True)
-            return (message)
-        elif evening == True:
-            message = self.forecast(day=2,   evening=True)
-            return (message)
-        else:
-            print('Что-то пошло не так, звоните в милицию.')
-            raise SystemExit(1)
+        message = self.forecast(day=2, night=night, morning=morning, afternoon=afternoon, evening=evening)
+        return (message)
 
     def after_tomorrow(self, night=False, morning=False, afternoon=False, evening=False):
-        if night == True:
-            message = self.forecast(day=3,     night=True)
-            return (message)
-        elif morning == True:
-            message = self.forecast(day=3,   morning=True)
-            return (message)
-        elif afternoon == True:
-            message = self.forecast(day=3, afternoon=True)
-            return (message)
-        elif evening == True:
-            message = self.forecast(day=3,   evening=True)
-            return (message)
-        else:
-            print('Что-то пошло не так, звоните в милицию.')
-            raise SystemExit(1)
+        message = self.forecast(day=3, night=night, morning=morning, afternoon=afternoon, evening=evening)
+        return (message)
 
 forecast = Forecast('http://www.eurometeo.ru/belarus/gomelskaya-oblast/jitkovichi/export/xml/data/')
-print(forecast.after_tomorrow(afternoon=True))
+print(forecast.today(night=True))
