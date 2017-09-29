@@ -1,7 +1,7 @@
 import requests
 import xml.etree.ElementTree as ET
 
-class Forecast():
+class ForecastFetcher():
     """Weather forecast for city or town for which url is entered"""
 
     def __init__(self, url):
@@ -31,11 +31,11 @@ class Forecast():
         root_press = root[0][day*4 + int(night)*night_value + int(morning)*morning_value +
                             int(afternoon)*afternoon_value + int(evening)*evening_value - 1][1].text
 
-        message = '\nПрогноз погоды по г. {!s}, на {!s}. \nТемпература воздуха: {!s} градусов. ' \
-                  '\nАтмосферное давление: {!s} мм ртутного столба.'\
+        forecast_result = '\nПрогноз погоды по г. {}, на {}. \nТемпература воздуха: {} градусов. ' \
+                  '\nАтмосферное давление: {} мм ртутного столба.'\
                   .format(root_city, root_time, root_temp, root_press)
 
-        return message
+        return forecast_result
 
     def today(self, **kwargs):
         return self.forecast(day=1, **kwargs)
@@ -46,5 +46,5 @@ class Forecast():
     def after_tomorrow(self, **kwargs):
         return self.forecast(day=3, **kwargs)
 
-forecast = Forecast('http://www.eurometeo.ru/belarus/gomelskaya-oblast/jitkovichi/export/xml/data/')
+forecast = ForecastFetcher('http://www.eurometeo.ru/belarus/gomelskaya-oblast/jitkovichi/export/xml/data/')
 print(forecast.tomorrow(night=True))
