@@ -31,15 +31,9 @@ class Forecast():
         root_press = root[0][day*4 + int(night)*night_value + int(morning)*morning_value +
                             int(afternoon)*afternoon_value + int(evening)*evening_value - 1][1].text
 
-        text1 = "Прогноз погоды по г. "
-        text2 = " на "
-        text3 = " Температура воздуха: "
-        text4 = " градусов. "
-        text5 = " Атмосферное давление: "
-        text6 = " мм ртутного столба."
-
-        message = text1 + str(root_city) + text2 + str(root_time) + text3 + str(root_temp) \
-                  + text4 + text5 + str(root_press) + text6
+        message = '\nПрогноз погоды по г. {!s}, на {!s}. \nТемпература воздуха: {!s} градусов. ' \
+                  '\nАтмосферное давление: {!s} мм ртутного столба.'\
+                  .format(root_city, root_time, root_temp, root_press)
 
         return message
 
@@ -53,4 +47,4 @@ class Forecast():
         return self.forecast(day=3, **kwargs)
 
 forecast = Forecast('http://www.eurometeo.ru/belarus/gomelskaya-oblast/jitkovichi/export/xml/data/')
-print(forecast.after_tomorrow(afternoon=True))
+print(forecast.tomorrow(night=True))
