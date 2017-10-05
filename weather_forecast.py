@@ -2,6 +2,12 @@ import requests
 import xml.etree.ElementTree as ET
 
 
+class ForecastResult():
+    def __init__(self, temperature, pressure, result):
+        self.temperature = temperature
+        self.pressure = pressure
+        self.result = result
+
 
 class ForecastFetcher():
     """Weather forecast for city or town for which url is entered"""
@@ -37,7 +43,7 @@ class ForecastFetcher():
                   '\nАтмосферное давление: {} мм ртутного столба.'\
                   .format(root_city, root_time, root_temp, root_press)
 
-        return forecast_result
+        return ForecastResult(temperature=root_temp, pressure=root_press, result=forecast_result)
 
     def today(self, **kwargs):
         return self.forecast_fetcher(day=1, **kwargs)
@@ -48,15 +54,8 @@ class ForecastFetcher():
     def after_tomorrow(self, **kwargs):
         return self.forecast_fetcher(day=3, **kwargs)
 
-    def result(self, **kwargs):
-        list = self.forecast_fetcher(**kwargs).split('\n')
-        del list[0]
-        return list
-
-
 forecast_fetcher = ForecastFetcher('http://www.eurometeo.ru/belarus/gomelskaya-oblast/jitkovichi/export/xml/data/')
-#print(forecast_fetcher.tomorrow(night=True))
 
-result = forecast_fetcher.result(day=1, afternoon=True)
-print(result)
-
+result = forecast_fetcher.today(morning=True)
+print(result.result)
+print (ET.__doc__)
